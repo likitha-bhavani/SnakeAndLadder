@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake & Ladder Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+  <div class="left-panel">
+  <h1 class="game-title">🐍 Snakes and Ladders Game</h1>
+  <p class="game-desc">You and Computer are playing the game 🎮</p>
+</div>
+
+    <div class="board-container" id="board"></div>
+
+    <div class="controls">
+      <h1>🎲 Dice Roll</h1>
+      <div id="turn">Player's Turn ⚫</div>
+      <div>
+        <img id="dice" class="dice" src="images/dice6.png" alt="Dice">
+        <div id="dice-result"></div>
+      </div>
+    </div>
+  </div>
+<button id="quit-bottom-button">Quit</button>
+
+<div id="winner-screen" style="display: none;">
+  <div id="winner-content">
+    <p id="winner-text"></p>
+    <img id="winner-image" src="" alt="Winner Image" style="width: 150px; height: auto;" />
+    <button onclick="replayGame()">Replay</button>
+    <button onclick="quitGame()">Quit</button>
+  </div>
+</div>
+
+
+  <script src="javascript.js"></script>
+</body>
+</html>
