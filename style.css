@@ -196,6 +196,7 @@ body {
     .controls,
     .left-panel {
       width: 70vw;
+        height:40%;
     }
   
     .controls {
