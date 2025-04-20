@@ -33,7 +33,6 @@ const snakeBiteSound = new Audio('sounds/snake.mp3');
 const ladderMoveSound = new Audio('sounds/ladder.mp3');
 const coinMoveSound = new Audio('sounds/coins.mp3');
 
-// Generate board
 for (let row = 9; row >= 0; row--) {
   for (let col = 0; col < 10; col++) {
     const num = row % 2 === 0 ? row * 10 + col + 1 : row * 10 + (9 - col) + 1;

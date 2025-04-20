@@ -120,24 +120,6 @@ body::before {
     button:active {
       transform: scale(0.95);
     }
-@media (max-width: 1024px) {
-      .options-container {
-        gap: 50px;
-      }
-
-      .option img {
-        max-width: 120px;
-      }
-
-      h2 {
-        font-size: 2.2em;
-      }
-
-      button {
-        font-size: 1em;
-        padding: 10px 20px;
-      }
-    }
 @media (max-width: 600px) {
   body {
     display: flex;
@@ -177,12 +159,12 @@ body::before {
 }
 #quit-bottom-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 70px;
+  right: 60px;
   background-color:rgb(161, 43, 43);
   color: white;
   padding: 12px 20px;
-  font-size: 16px;
+  font-size: 46px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -194,32 +176,6 @@ body::before {
 #quit-bottom-button:hover {
   background-color: #ff1a1a;
 }
-@media (max-width: 600px) {
-  .options-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-  }
-
-  .option-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .option {
-    width: 80%;
-    max-width: 300px;
-  }
-
-  #quit-bottom-button {
-    font-size: 38px;
-    padding: 14px 26px;
-    bottom: 15px;
-    right: 15px;
-  }
-}
-
   
   </style>
 </head>
@@ -246,11 +202,10 @@ body::before {
       <button id="friends" onclick="play('friends')">Play with Friends</button>
     </div>
   </div>
-
-</div>
-
+  
 <button id="quit-bottom-button">Quit</button>
 
+</div>
   <script>
    function play(mode) {
   if (mode === 'computer') {
