@@ -120,6 +120,25 @@ body::before {
     button:active {
       transform: scale(0.95);
     }
+    #quit-bottom-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #ae2121;
+  color: white;
+  padding: 12px 20px;
+  font-size: 26px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+#quit-bottom-button:hover {
+  background-color: #ff1a1a;
+}
 @media (max-width: 600px) {
   body {
     display: flex;
@@ -157,6 +176,7 @@ body::before {
     justify-content: center;
   }
 }
+<<<<<<< HEAD
 #quit-bottom-button {
   position: fixed;
   bottom: 30px;
@@ -177,6 +197,8 @@ body::before {
   background-color: #ff1a1a;
 }
   
+=======
+>>>>>>> d96a573a305fe852170e22b50f836e9f45c57bc1
   </style>
 </head>
 <body>
