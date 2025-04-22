@@ -105,7 +105,7 @@ function rollDice() {
         break;
     }
 
-    dice.addEventListener("click", rollDice); // re-enable
+    dice.addEventListener("click", rollDice); 
   }, 600);
 }
 

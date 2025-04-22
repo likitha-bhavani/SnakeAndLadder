@@ -169,7 +169,27 @@ h1 {
   justify-content: center;
   z-index: 1000;
 }
+#winner-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
 
+#winner-content button {
+  margin: 10px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#winner-content button:hover {
+  background-color: #45a049;
+}
 .winner-message {
   background: white;
   padding: 30px;

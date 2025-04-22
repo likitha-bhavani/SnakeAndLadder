@@ -57,7 +57,7 @@ function createToken(symbol) {
 dice.addEventListener("click", rollDice);
 
 function rollDice() {
-  dice.removeEventListener("click", rollDice); // prevent multiple clicks
+  dice.removeEventListener("click", rollDice); 
 
   const roll = Math.floor(Math.random() * 6) + 1;
   sounds.dice.play();
@@ -89,7 +89,7 @@ function rollDice() {
       turnText.innerText = "Player 1's Turn ⚫";
     }
 
-    dice.addEventListener("click", rollDice); // re-enable
+    dice.addEventListener("click", rollDice);
   }, 600);
 }
 
