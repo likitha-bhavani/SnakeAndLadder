@@ -1,241 +1,297 @@
-*{
-
-margin:0px;
+* {
+  margin: 0px;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #F8ED8C;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #F8ED8C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
 
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.board-container {
+  width: 700px;
+  height: 700px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  border: 3px solid #000;
+  background-image: url("image.avif");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(137, 172, 70, 0.15);
+  position: relative;
+}
+
+.token {
+  position: absolute;
+  font-size: 20px;
+}
+
+.controls {
+  width: 220px;
+  background-color: #89AC46;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.game-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.game-desc {
+  font-size: 14px;
+  color: #ac1919;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+#turn {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #D3E671;
+}
+
+.dice {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  transition: transform 1.45s ease;
+}
+
+.roll-animate {
+  transform: rotate(720deg);
+}
+
+#dice-result {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.left-panel {
+  width: 250px;
+  height: fit-content;
+  text-align: center;
+  padding: 20px;
+  background-color: #D3E671;
+  color: #2c3e50;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeInLeft 1s ease-out forwards;
+}
+
+#player-info {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.player {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: bold;
+}
+
+.player-coin {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#quit-bottom-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ae2121;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+#quit-bottom-button:hover {
+  background-color: #ff1a1a;
+}
+
+#winner-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.winner-message {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.winner-img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.winner-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.winner-buttons button {
+  padding: 8px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.winner-buttons button:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0px;
+  }
+
+  .board-container {
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .controls,
+  .left-panel {
+    width: 70vw;
+    padding: 0px;
+    
   }
   
-  .game-container {
+.game-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.game-desc {
+  font-size: 10px;
+  color: #ac1919;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+  #player-info {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    max-width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-  
+    justify-content: center;  
+    align-items: center;      
+    gap: 0px;
+    font-size:12px;
   }
   
-  .board-container {
-    width: 700px;
-    height: 700px;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    border: 3px solid #000;
-    background-image: url("image.avif");
-    background-size: cover;
-    background-position: center;
-    position: relative;
-  }
-  
-  .cell {
+  .player {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 2px;
-    font-size: 10px;
-    font-weight: bold;
-    color: white;
-   ;
-    background-color: rgba(137, 172, 70, 0.15);
-    position: relative;
+    gap: 2px;
   }
   
-  .token {
-    position: absolute;
-    font-size: 20px;
-  }
   .controls {
-    width: 220px;
-    background-color: #89AC46;
-    color: white;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
+    order: 2;
   }
-  
-  .game-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 10px;
-  }
-  
-  .game-desc {
-    font-size: 14px;
-    color: #ac1919;
-  }
-  
-  h1 {
-    margin-bottom: 5px;
-  }
-  
-  #turn {
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #D3E671;
-  }
-  
-  .dice {
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
-    transition: transform 1.45s ease;
-  }
-  .roll-animate {
-    transform: rotate(720deg);
-  }
-  
-  #dice-result {
-    font-size: 16px;
-    margin-top: 5px;
-  }
-  .left-panel {
-    width: 250px;
-    height: fit-content;
-    text-align: center;
-    padding: 20px;
-    background-color: #D3E671;
-    color: #2c3e50;
-   
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    font-family: 'Segoe UI', sans-serif;
-    animation: fadeInLeft 1s ease-out forwards;
-  }
-  #quit-bottom-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ae2121;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: 0.3s ease;
-    z-index: 9999;
-  }
-  
-  #quit-bottom-button:hover {
-    background-color: #ff1a1a;
-  }
-  
-  #winner-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(6px);
-    background-color: rgba(0, 0, 0, 0.4);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .winner-message {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  }
-  
-  .winner-img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
-  }
-  
-  .winner-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .winner-buttons button {
-    padding: 8px 18px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .winner-buttons button:hover {
-    background-color: #218838;
-  }
-  @media (max-width: 768px) {
-    .game-container {
-      flex-direction: column-reverse;
-      align-items: center;
-      gap: 20px;
-      padding:0px;
-    }
-  
-    .board-container {
-      width: 90vw;
-      height: 90vw;
 
-    }
-  
-    .controls,
-    .left-panel {
-     
-      width: 70vw;
-      padding:0px;
-    }
-  
-    .controls {
-      order: 2; /* Optional for more precise ordering */
-    }
-  
-    .left-panel {
-      order: 1;
-    }
+  .left-panel {
+    order: 1;
   }
   
-  
-  @media (max-width: 768px) {
-    .game-container {
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      padding:0px;
-    }
-  
-    .board-container {
-      width: 90vw;
-      height: 90vw;
-    }
-  
-    .controls,
-    .left-panel {
-      width: 70vw;
-     
-      margin:0px;
-padding:0px;
-    }
-  }
-   
-  
+.dice {
+  width: 50px;
+  height: 60px;
+  cursor: pointer;
+  transition: transform 1.45s ease;
+}
+
+.roll-animate {
+  transform: rotate(720deg);
+}
+
+#dice-result {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.left-panel {
+  width: 250px;
+  height: 120px;
+  text-align: center;
+  padding: 20px;
+  background-color: #D3E671;
+  color: #2c3e50;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeInLeft 1s ease-out forwards;
+}
+}

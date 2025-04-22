@@ -1,18 +1,15 @@
-
 const board = document.getElementById("board");
 const dice = document.getElementById("dice");
 const diceResult = document.getElementById("dice-result");
 const turnText = document.getElementById("turn");
 
-const player1Token = document.createElement("div");
-const player2Token = document.createElement("div");
-player1Token.className = "token";
-player2Token.className = "token";
-player1Token.innerText = "⚫"; // Player 1
-player2Token.innerText = "🔵"; // Player 2
+const player1Token = createToken("⚫");
+const player2Token = createToken("🔵");
+const player3Token = createToken("🔴");
 
 let player1Position = 1;
 let player2Position = 1;
+let player3Position = 1;
 let currentPlayer = "player1";
 
 const snakes = {
@@ -28,10 +25,12 @@ const ladders = {
 
 const cells = [];
 
-const diceRollSound = new Audio('sounds/dice-roll.mp3');
-const snakeBiteSound = new Audio('sounds/snake.mp3');
-const ladderMoveSound = new Audio('sounds/ladder.mp3');
-const coinMoveSound = new Audio('sounds/coins.mp3');
+const sounds = {
+  dice: new Audio('sounds/dice-roll.mp3'),
+  snake: new Audio('sounds/snake.mp3'),
+  ladder: new Audio('sounds/ladder.mp3'),
+  move: new Audio('sounds/coins.mp3')
+};
 
 for (let row = 9; row >= 0; row--) {
   for (let col = 0; col < 10; col++) {
@@ -46,49 +45,71 @@ for (let row = 9; row >= 0; row--) {
 
 cells[1].appendChild(player1Token);
 cells[1].appendChild(player2Token);
+cells[1].appendChild(player3Token);
+
+function createToken(symbol) {
+  const token = document.createElement("div");
+  token.className = "token";
+  token.innerText = symbol;
+  return token;
+}
 
 dice.addEventListener("click", rollDice);
 
-function moveToken(token, oldPos, steps) {
-  let newPos = oldPos + steps;
-  if (newPos > 100) return oldPos;
-
-  if (snakes[newPos]) {
-    snakeBiteSound.play();
-    newPos = snakes[newPos];
-  } else if (ladders[newPos]) {
-    ladderMoveSound.play();
-    newPos = ladders[newPos];
-  }
-
-  coinMoveSound.play();
-  token.remove();
-  cells[newPos].appendChild(token);
-  return newPos;
-}
-
 function rollDice() {
+  dice.removeEventListener("click", rollDice); // prevent multiple clicks
+
   const roll = Math.floor(Math.random() * 6) + 1;
-  diceRollSound.play();
+  sounds.dice.play();
   dice.classList.add("roll-animate");
 
   setTimeout(() => {
     dice.classList.remove("roll-animate");
     dice.src = `images/dice${roll}.png`;
-    diceResult.innerText = `${currentPlayer === "player1" ? "Player 1" : "Player 2"} rolled a ${roll}`;
 
     if (currentPlayer === "player1") {
+      diceResult.innerText = `Player 1 rolled a ${roll}`;
       player1Position = moveToken(player1Token, player1Position, roll);
       if (player1Position === 100) return showWinner("Player 1");
       currentPlayer = "player2";
       turnText.innerText = "Player 2's Turn 🔵";
-    } else {
+
+    } else if (currentPlayer === "player2") {
+      diceResult.innerText = `Player 2 rolled a ${roll}`;
       player2Position = moveToken(player2Token, player2Position, roll);
       if (player2Position === 100) return showWinner("Player 2");
+      currentPlayer = "player3";
+      turnText.innerText = "Player 3's Turn 🔴";
+
+    } else {
+      diceResult.innerText = `Player 3 rolled a ${roll}`;
+      player3Position = moveToken(player3Token, player3Position, roll);
+      if (player3Position === 100) return showWinner("Player 3");
       currentPlayer = "player1";
       turnText.innerText = "Player 1's Turn ⚫";
     }
-  }, 400);
+
+    dice.addEventListener("click", rollDice); // re-enable
+  }, 600);
+}
+
+function moveToken(token, currentPos, steps) {
+  let newPos = currentPos + steps;
+  if (newPos > 100) return currentPos;
+
+  if (snakes[newPos]) {
+    newPos = snakes[newPos];
+    sounds.snake.play();
+  } else if (ladders[newPos]) {
+    newPos = ladders[newPos];
+    sounds.ladder.play();
+  } else {
+    sounds.move.play();
+  }
+
+  token.remove();
+  cells[newPos].appendChild(token);
+  return newPos;
 }
 
 function showWinner(winner) {
@@ -99,11 +120,9 @@ function showWinner(winner) {
 function replayGame() {
   window.location.reload();
 }
-function quitGame() {
-    window.location.href = "player.html"; 
-  }
 
-  document.getElementById("quit-bottom-button").addEventListener("click", function() {
-    window.location.href = "select.html";
-  });
-  
+function quitGame() {
+  window.location.href = "select.html";
+}
+
+document.getElementById("quit-bottom-button").addEventListener("click", quitGame);

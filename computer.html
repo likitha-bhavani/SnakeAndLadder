@@ -8,33 +8,42 @@
 </head>
 <body>
   <div class="game-container">
-  <div class="left-panel">
-  <h1 class="game-title">🐍 Snakes and Ladders Game</h1>
-  <p class="game-desc">You and Computer are playing the game 🎮</p>
-</div>
+    <div class="left-panel">
+      <h1 class="game-title">🐍 Snakes and Ladders Game</h1>
+      <p class="game-desc">You and Computer are playing the game 🎮</p>
+      
+      <div id="player-info">
+        <div class="player" id="player1">
+          <span class="player-coin" style="background-color: black;"></span> <span class="player-name">Player 1</span>
+        </div>
+        <div class="player" id="player2">
+          <span class="player-coin" style="background-color: blue;"></span> <span class="player-name">computer</span>
+        </div>
+      </div>
+    </div>
 
     <div class="board-container" id="board"></div>
 
     <div class="controls">
       <h1>🎲 Dice Roll</h1>
-      <div id="turn">Player's Turn ⚫</div>
+      <div id="turn">Player 1's Turn ⚫</div>
       <div>
         <img id="dice" class="dice" src="images/dice6.png" alt="Dice">
         <div id="dice-result"></div>
       </div>
     </div>
   </div>
-<button id="quit-bottom-button">Quit</button>
 
-<div id="winner-screen" style="display: none;">
-  <div id="winner-content">
-    <p id="winner-text"></p>
-    <img id="winner-image" src="" alt="Winner Image" style="width: 150px; height: auto;" />
-    <button onclick="replayGame()">Replay</button>
-    <button onclick="quitGame()">Quit</button>
+  <button id="quit-bottom-button">Back</button>
+
+  <div id="winner-screen" style="display: none;">
+    <div id="winner-content">
+      <p id="winner-text"></p>
+      <img id="winner-image" src="" alt="Winner Image" style="width: 150px; height: auto;" />
+      <button onclick="replayGame()">Replay</button>
+      <button onclick="quitGame()">Quit</button>
+    </div>
   </div>
-</div>
-
 
   <script src="javascript.js"></script>
 </body>

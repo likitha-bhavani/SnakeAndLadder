@@ -158,19 +158,19 @@ body::before {
   }
 }
 #quit-bottom-button {
-  position: fixed;
-  bottom: 70px;
-  right: 60px;
-  background-color:rgb(161, 43, 43);
-  color: white;
-  padding: 12px 20px;
-  font-size: 46px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: 0.3s ease;
-  z-index: 9999;
+   position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ae2121;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: 0.3s ease;
+    z-index: 9999;
 }
 
 #quit-bottom-button:hover {
@@ -211,7 +211,7 @@ body::before {
   if (mode === 'computer') {
     window.location.href = "computer.html";
   } else if (mode === 'friends') {
-    window.location.href = "friends.html";
+    window.location.href = "select.html";
   }
 }
 document.getElementById("quit-bottom-button").addEventListener("click", function() {
