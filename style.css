@@ -206,14 +206,22 @@ h1 {
   background-color: #218838;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
+ 
   .game-container {
+    display: flex; /* ensure flex is applied */
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding: 0px;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    width: 100vw;           
+    max-width: 100%;      
+    box-sizing: border-box; 
+    overflow-x: hidden;     
   }
+  
 
   .board-container {
     width: 90vw;
@@ -293,11 +301,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   font-family: 'Segoe UI', sans-serif;
   animation: fadeInLeft 1s ease-out forwards;
-}
-.container {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 }
